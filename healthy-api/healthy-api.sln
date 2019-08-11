@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "healthy-api", "healthy-api\healthy-api.csproj", "{FCD7E845-7A20-4FAD-B4F4-CCF4B598C983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCD7E845-7A20-4FAD-B4F4-CCF4B598C983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD7E845-7A20-4FAD-B4F4-CCF4B598C983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD7E845-7A20-4FAD-B4F4-CCF4B598C983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD7E845-7A20-4FAD-B4F4-CCF4B598C983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
