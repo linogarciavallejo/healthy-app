@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using healthy_api.DataProvider;
 
 namespace healthy_api
 {
@@ -25,6 +26,9 @@ namespace healthy_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddTransient<IUserDataProvider, UserDataProvider>();
+            services.AddTransient<IHealthyEventsDataProvider, HealthyEventsDataProvider>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -41,8 +45,20 @@ namespace healthy_api
                 app.UseHsts();
             }
 
+            app.UseCors(
+                //options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
+                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            ); 
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id}");
+            });
         }
     }
 }
