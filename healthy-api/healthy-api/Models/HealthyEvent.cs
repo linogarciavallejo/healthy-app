@@ -9,6 +9,7 @@ namespace healthy_api.Models
         public int UserId { get; set; }
         public DateTime Logged { get; set; }
         public byte EventTypeId { get; set; }
+        public string EventTypeName { get; set; }
         public short? Milliliters { get; set; }
         public decimal? WalkingDistance { get; set; }
         public decimal? TimeElapsed { get; set; }

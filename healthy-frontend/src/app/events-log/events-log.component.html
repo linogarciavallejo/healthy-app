@@ -1,1 +1,88 @@
-<p>events-log works!</p>
+<div>hello events</div>
+<div>
+  <p>{{userData.email}}</p>
+</div>
+<!-- <div class="mat-elevation-z8">
+  <table mat-table [dataSource]="userData">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+      <td mat-cell *matCellDef="let row"> {{row.location}} </td>
+    </ng-container>
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+      <td mat-cell *matCellDef="let row"> {{row.country}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedFields"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedFields;">
+    </tr>
+
+  </table>
+</div> -->
+
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="logged">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let row"> {{row.logged  | date:"dd/MM/yyyy hh:mm"}} </td>
+    </ng-container>
+    <!-- Activity Column -->
+    <ng-container matColumnDef="eventTypeName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Activity </th>
+      <td mat-cell *matCellDef="let row"> {{row.eventTypeName}} </td>
+    </ng-container>
+
+    <!-- Milliliters Column -->
+    <ng-container matColumnDef="milliliters">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Water ml. </th>
+      <td mat-cell *matCellDef="let row"> {{row.milliliters}} </td>
+    </ng-container>
+
+    <!-- Walking Distance Column -->
+    <ng-container matColumnDef="walkingDistance">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Distance kms. </th>
+      <td mat-cell *matCellDef="let row"> {{row.walkingDistance}} </td>
+    </ng-container>
+
+    <!-- Time Elapsed Column -->
+    <ng-container matColumnDef="timeElapsed">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+      <td mat-cell *matCellDef="let row"> {{row.timeElapsed}} </td>
+    </ng-container>
+
+    <!-- Calories Column -->
+    <ng-container matColumnDef="calories">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Calories </th>
+      <td mat-cell *matCellDef="let row"> {{row.calories}} </td>
+    </ng-container>
+
+    <!-- Score Column -->
+    <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Score </th>
+      <td mat-cell *matCellDef="let row" [ngClass]="{'highlight': row.score >= 9, 
+        'needswork': row.score <= 8}">{{row.score}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

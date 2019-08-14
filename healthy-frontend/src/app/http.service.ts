@@ -9,7 +9,12 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  getEventsLog() {
-    return this.http.get('https://localhost:5001/api/User');
+  getUser(userId: any) {
+    return this.http.get('https://localhost:5001/api/User/' + userId);
+  }
+
+  getEventsLog(userId: any) {
+    // return this.http.get('https://localhost:5001/api/User');
+    return this.http.get('https://localhost:5001/api/eventslog/' + userId);
   }
 }

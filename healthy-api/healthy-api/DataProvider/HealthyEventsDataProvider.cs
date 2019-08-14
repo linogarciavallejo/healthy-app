@@ -22,8 +22,14 @@ namespace healthy_api.DataProvider
                 await sqlConnection.OpenAsync();
                 var dynamicParameters = new DynamicParameters();
                 dynamicParameters.Add("@UserId", UserId);
+                /*string sql = "SELECT Logged, et.Name AS EventType, Milliliters, WalkingDistance, TimeElapsed, Calories, Score ";
+                sql += " FROM [Healthy_Events] he ";
+                sql += " JOIN [Event_Types] et ON he.EventTypeId = et.EventTypeId ";
+                sql += " WHERE UserId = @UserId ORDER BY [Logged] DESC";
+                string sql2 = "SELECT Logged, et.Name AS EventType, Milliliters, WalkingDistance, TimeElapsed, Calories, Score  FROM [Healthy_Events] he  JOIN [Event_Types] et ON he.EventTypeId = et.EventTypeId  WHERE UserId = 1 ORDER BY [Logged] DESC";
+                //sql3 ="SELECT * FROM Healthy_Events WHERE UserId = @UserId"*/
                 return await sqlConnection.QueryAsync<HealthyEvent>(
-                    "SELECT * FROM [Healthy_Events] WHERE UserId = @UserId ORDER BY [Logged] DESC",
+                    sql: "SELECT Logged, et.Name AS EventTypeName, Milliliters, WalkingDistance, TimeElapsed, Calories, Score  FROM [Healthy_Events] he  JOIN [Event_Types] et ON he.EventTypeId = et.EventTypeId  WHERE UserId = @UserId ORDER BY [Logged] DESC",
                     dynamicParameters,
                     commandType: CommandType.Text);
             }
